@@ -1,0 +1,403 @@
+{% load static %}{% load filterlist %} {% allCourses as allcourses_ %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>GiLeCos-Certificates</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/my/logosmall.png' %}">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/responsive.css' %}"> -->
+
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area " style="background-color: green;">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid p-0">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-xl-2 col-lg-2 ">
+                            <div class="logo-img">
+                                <a href="{% url 'home' %}">
+                                    <img class="d-none d-sm-none d-md-none d-lg-block d-xl-block" src="{% static 'img/my/logosmall.png' %}" alt="">
+                                </a>
+                            </div>
+                            <button class="btn d-lg-none d-xl-none" type="button " data-toggle="modal" data-target=".bd-example-modal-lg" style="float: right;">
+                                <!-- <span class="glyphicon glyphicon-option-horizontal" style="color: black;"></span> -->
+                                <i style="font-size:24px" class="fa">&#xf0c9;</i>
+                              </button>
+                        </div>
+
+                        <div class="col-xl-7 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a class="active" href="{% url 'home' %}">home</a></li>
+                                        <li><a href="{% url 'allCourses' %}"> All Courses</a></li>
+                                        <!-- <li><a href="{% url 'about' %}">About</a></li> -->
+                                        <!-- <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="blog.html">blog</a></li>
+                                                <li><a href="single-blog.html">single-blog</a></li>
+                                            </ul>
+                                        </li> -->
+                                        <li><a href="{% url 'contactUs' %}">Contact</a></li>
+                                        <li><a href="#">More <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li>
+                                                    <a href="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Verify Certificate</a>
+                                                </li>
+                                                <li><a href="{% url 'testPage' %}">Start Quiz</a></li>
+                                                <!-- <li><a href="course_details.html">course details</a></li>
+                                                <li><a href="elements.html">elements</a></li> -->
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="log_chat_area d-flex align-items-center">
+                                {% if user.is_authenticated %}
+                                <a href="{% url 'logOut' %}" class="login popup-with-form">
+                                    <i class="flaticon-user"></i>
+                                    <span>Sign out</span>
+                                </a>
+                                {% else %}
+                                <a href="{% url 'signIn' %}" class="login popup-with-form">
+                                    <i class="flaticon-user"></i>
+                                    <span>sign in</span>
+                                </a>{% endif %}
+
+                                <div class="live_chat_btn">
+                                    <a class="boxed_btn" href="{% url 'nwCourse' %}">
+
+                                        <span>Request New Course</span>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- nav modal -->
+        <div class="modal fade bd-example-modal-lg" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="background-color: cornsilk;">
+                    <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" >&times;</span>
+                      </button>
+                    <ul id="navigation" style="line-height: 200%;">
+                        <li style="background-color: brown; padding-left:10%; ">
+                            <a class="active" href="{% url 'home' %}">
+                                <h3>Home</h3>
+                            </a>
+                        </li>
+                        <li style="background-color: rgb(202, 159, 38); padding-left:10%;">
+                            <a href="{% url 'allCourses' %}">
+                                <h3>All Courses</h3>
+                            </a>
+                        </li>
+
+                        <!-- <li style="background-color: rgb(240, 84, 23); padding-left:10%;">
+                            <a href="{% url 'about' %}">
+                                <h3>About</h3>
+                            </a>
+                        </li> -->
+                        <!-- <li style="background-color: brown; padding-left:10%;"><a href="#">Quiz <i class="ti-angle-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="{% url 'testPage' %}">Start Quiz</a></li>
+                                <li><a href="single-blog.html">single-blog</a></li>
+                            </ul>
+                        </li> -->
+                        <li style="background-color: rgb(236, 162, 65); padding-left:10%;">
+                            <a href="{% url 'contactUs' %}">
+                                <h3>Contact</h3>
+                            </a>
+                        </li>
+                        <li style="background-color: rgb(65, 91, 236); padding-left:10%;" class="mb-2">
+                            <a href="" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Verify Certificate</a>
+                        </li>
+                        <li class="mb-2" style="background-color: rgb(65, 173, 236); padding-left:10%;"><a href="{% url 'testPage' %}">Start Quiz</a></li>
+
+                        <li class="mb-2" style="background-color: rgba(65, 216, 236, 0.664); padding-left:10%;"> {% if user.is_authenticated %}
+                            <a href="{% url 'logOut' %}" class="login popup-with-form">
+                                <i class="flaticon-user"></i>
+                                <span>Sign out</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'signIn' %}" class="login popup-with-form">
+                                <i class="flaticon-user"></i>
+                                <span>sign in</span>
+                            </a>{% endif %}
+                        </li>
+                        <li class="mb-2" style="background-color: rgba(65, 153, 236, 0.781); padding-left:10%;">
+                            <div>
+                                <a href="{% url 'nwCourse' %} " class="login popup-with-form">
+
+                                    <span>Request New Course</span>
+
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+    </header>
+    <!-- header-end -->
+
+
+
+    {% block content %} {% endblock content %}
+
+
+
+    <!-- modal cert verification start -->
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="false" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Certificate verification</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <div class="modal-body">
+                    <form id="csubmit" action="{% url 'verifyCertificate' %}">
+                        <div class="form-group">
+                            <label for="serial" class="col-form-label">Certificate Serial:</label>
+                            <input type="text" name="serial" class="form-control" id="serial">
+                        </div>
+                        <button type="submit" id="serial_submit" class="btn btn-primary">Verify</button>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- modal cert verification start -->
+
+
+
+
+
+    <!-- subscribe_newsletter_Start -->
+    <div class="subscribe_newsletter ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-xl-6 col-lg-6 ">
+                    <div class="newsletter_text ">
+                        <h3>Subscribe Newsletter</h3>
+                        <p>Subscribe us with your Email to remain notified about the new courses.</p>
+                    </div>
+                </div>
+                <div class="col-xl-5 offset-xl-1 col-lg-6 col-sm-6 ">
+                    <div class="newsletter_form ">
+                        <!-- <h4></h4> -->
+                        <!-- <form action="# " class="newsletter_form ">
+                            <input type="text " placeholder="Enter your mail ">
+                            <button type="submit ">Notify</button>
+                        </form> -->
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfHoNrOiHZGh-WcUJ5ywU0trHYvYUt4mTg3UvG24uB4VV6o4g/viewform?embedded=true" width="100%" height="432" frameborder="0" marginheight="0" scrolling="no" marginwidth="0">Loading…</iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- subscribe_newsletter_end -->
+
+    <!-- footer -->
+    <footer class="footer footer_bg_1 ">
+        <div class="footer_top ">
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-xl-4 col-md-6 col-lg-4 ">
+                        <div class="footer_widget ">
+                            <div class="footer_logo ">
+                                <a href="# ">
+                                    <img src="{% static 'img/my/logosmall.png' %} " alt=" ">
+                                </a>
+                            </div>
+                            <p>
+                                We won't stop by barrier that money creates forth us. The cheap and nearly no cost certification will provide a way to obtain the proof of knowledge that you already have without wasting a mountain of money.
+                            </p>
+                            <div class="socail_links " style="color: orange; ">
+                                <ul>
+                                    <li>
+                                        <a href="# ">
+                                            <i class="ti-facebook " style="color: orange; "></i>
+                                        </a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="# ">
+                                            <i class="ti-twitter-alt " style="color: orange; "></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="# ">
+                                            <i class="fa fa-instagram " style="color: orange; "></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="# ">
+                                            <i class="fa fa-youtube-play " style="color: orange; "></i>
+                                        </a>
+                                    </li> -->
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3 ">
+                        <div class="footer_widget ">
+                            <h3 class="footer_title ">
+                                Important Links
+                            </h3>
+                            <ul>
+                                <li><a href="{% url 'tnc' %}" target="_blank">Terms and Conditions</a></li>
+                                <li><a href="{% url 'about' %}"> About</a></li>
+                                <li><a data-toggle="modal" data-target="#exampleModal" href="" data-whatever="@mdo">Verify Certificate</a></li>
+                                <li><a href="{% url 'testPage' %}">Start Quiz</a></li>
+                                <!-- <li><a href="# ">UI/UX</a></li> -->
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-6 col-lg-2 ">
+                        <div class="footer_widget ">
+                            <h3 class="footer_title ">
+                                Contact Us
+                            </h3>
+                            <ul>
+                                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=gilecos.courses@gmail.com">gilecos.courses@gmail.com</a></li>
+                                <!-- <li><a href="{% url 'testPage' %}">Start Quiz</a></li> -->
+                                <!-- <li><a href="# ">About</a></li>
+                                <li><a href="# "> About</a></li>
+                                <li><a href="# "> Contact</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="col-xl-3 col-md-6 col-lg-3" hidden>
+                        <div class="footer_widget ">
+                            <h3 class="footer_title ">
+                                Address
+                            </h3>
+                            <p>
+                                UttarPradesh India <br> +91 XXXXXXXXXX <br> edumark@contact.com
+                            </p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="copy-right_text ">
+
+            <div class="container ">
+                <div class="footer_border "></div>
+                <div class="row ">
+                    <div class="col-xl-12 ">
+                        <p class="copy_right text-center ">
+                            Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | made with <i class="fa fa-heart-o " aria-hidden="true "></i> and <i class="fa fa-coffee" aria-hidden="true"></i> by <a href=" " target="_blank ">GiLeCos</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+    <!-- JS here -->
+    <!-- <script src="{% static 'js/bootstrap.min.js' %} "></script> -->
+
+    <!-- <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %} "></script> -->
+
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %} "></script>
+
+    <!-- <script src="{% static 'js/popper.min.js' %} "></script> -->
+
+    <script src="{% static 'js/owl.carousel.min.js' %} "></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %} "></script>
+    <script src="{% static 'js/ajax-form.js' %} "></script>
+    <script src="{% static 'js/waypoints.min.js' %} "></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %} "></script>
+    <script src="{% static 'js/imagesloaded.pkgd.min.js' %} "></script>
+    <script src="{% static 'js/scrollIt.js' %} "></script>
+    <script src="{% static 'js/jquery.scrollUp.min.js' %} "></script>
+    <script src="{% static 'js/wow.min.js' %} "></script>
+    <script src="{% static 'js/nice-select.min.js' %} "></script>
+    <script src="{% static 'js/jquery.slicknav.min.js' %} "></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %} "></script>
+    <script src="{% static 'js/plugins.js' %} "></script>
+    <script src="{% static 'js/gijgo.min.js' %} "></script>
+    <script src="{% static 'js/jax.js' %}"></script>
+
+    <!--contact js-->
+    <!-- <script src="js/contact.js "></script>
+    <script src="js/jquery.ajaxchimp.min.js "></script>
+    <script src="js/jquery.form.js "></script>
+    <script src="js/jquery.validate.min.js "></script>
+    <script src="js/mail-script.js "></script> -->
+    <!-- firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-database.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-storage.js "></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+  https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js "></script>
+    <script src="{% static 'connect.js' %} "></script>
+
+</body>
+
+</html>

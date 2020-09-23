@@ -1,0 +1,66 @@
+ {% extends 'base.html' %} {% load static %} {% block content %}{% load filterlist %}
+
+
+
+<!-- 
+        Contact start
+        ==================== -->
+<section id="contact" class="section contact" style="margin-top: 16%;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="block">
+                    <div class="heading wow fadeInUp">
+                        <h2>Start Quiz</h2>
+                        <p>The quizz can be started by entering the registered Email used to make payment.Quizz can be taken multiple times within time period(quiz link for every course expire at 00:00 indiana ) starting from the time of successfull payment.
+                            <br>For any queries contact on our official-Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gilecos.courses@gmail.com">gilecos.courses@gmail.com</a> </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6 offset-md-3 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="form-group">
+                    <!-- <form action="#" id="contact-form"> -->
+                    <div class="input-field mb-2" hidden>
+                        <label for="studentEmail">Enter email here</label>
+                        <input type="text" value="{{ user.username }}" placeholder="{{ user.username }}" class="form-control" id="studentEmail" name="studentEmail">
+                    </div>
+                    <!-- <div class="input-field mb-2">
+                        <input type="text" class="form-control" placeholder="Course Serial Number" id="courseSerial" name="courseSerial">
+                    </div> -->
+                    <!-- <div class="input-field">
+                            <textarea class="form-control" placeholder="Your Message" rows="3" name="message"></textarea>
+                        </div> -->
+                    <!-- </form> -->
+                    <button class="btn btn-success" id="tsrat" type="submit" style="border-radius: 23.5px;">Get Quiz Link for the course You Paid</button>
+
+                    <div id="div1" class="container"></div>
+
+                    <script>
+                    </script>
+
+
+                    <!-- <div id="success">
+                        <p>Your Message was sent successfully</p>
+                    </div>
+                    <div id="error">
+                        <p>Your Message was not sent successfully</p>
+                    </div> -->
+                    <!-- <style>
+                        #tsrat:hover {
+                            background-image: linear-gradient( blue, yellow);
+                            animation-delay: 50ms;
+                        }
+                    </style> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% endblock %}

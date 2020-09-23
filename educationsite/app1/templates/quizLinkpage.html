@@ -1,0 +1,5 @@
+{% load filterlist %} {% for a in pete %} {% getQuizLink a.courseSerial as res %}
+
+
+<h3>Click on the button below to start quiz for {{ res.courseTitle }}</h3>
+<a href="{{ res.testFormUrl }}" class="btn btn-success"> Click here to Start Quiz </a> <br>{% endfor %}

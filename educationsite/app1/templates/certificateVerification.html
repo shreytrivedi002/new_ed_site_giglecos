@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% load static %} {% block content %}{% load filterlist %} {% if peter != 'None' %}
+<div class="container bg-warning" style="margin-top: 20%;">
+    <h1>Name: {{ peter.name }}</h1>
+    <h1>Certificate Serial: {{ peter.certificateSerial }}</h1>
+    <h1>Course: {{ peter.courseName }}</h1>
+    <h1>Date Issued: {{ peter.dateIssued }}</h1>
+
+
+</div>
+{% else %}
+<div class="container bg-warning" style="margin-top: 10%;">
+    <h2>
+        No data Found!!
+    </h2>
+</div>
+{% endif %} {% endblock %}

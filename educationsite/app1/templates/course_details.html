@@ -1,0 +1,246 @@
+{% extends 'base.html' %} {% load static %} {% block content %}{% load filterlist %}
+
+<!-- bradcam_area_start -->
+<div class="courses_details_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6" style="word-wrap: break-word; background-image: linear-gradient( rgb(65, 43, 43) 20%, rgb(100, 100, 99), rgb(25, 25, 34));padding: 5%;border-radius: 23.5px;">
+                <div class="course_text">
+                    <h3>{{ specs.courseTitle }}</h3>
+                    <div class="prise">
+                        <span class="inactive">₹{{ specs.priceBeforeDiscount }}</span>
+                        <span class="active">₹{{ specs.priceAfterDiscount }}</span>
+                    </div>
+                    <div class="star">
+                        <i class="flaticon-mark-as-favorite-star" style="color: yellow;"></i>
+                        <span style="color: whitesmoke;">{{ specs.courseRating }}</span>
+                    </div>
+                    <div>
+                        <span><h4 style="color: whitesmoke;">{{ specs.courseDesc }}</h4></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- bradcam_area_end -->
+
+<div class="courses_details_info">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-7 col-lg-7">
+
+                <div class="single_courses">
+                    <h3>Objectives</h3>
+                    <p>In Present scenario of the world each individual need/require/demand for the proof of everything that one has achieved. The Proof for the knowledge/studies/learning comes under the name of various Certification Programs which cost
+                        a lot of money. So we are working to provide the Certification in a very easy and Cheeper way. Come and Join us to demand the proof of your education/knowledge at a minimal or no cost.
+                        <h3 class="second_title">4 Easy Steps To get Easy Certificates!</h3>
+                </div>
+
+                <div class="outline_courses_info">
+                    <div id="accordion">
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    <i class="flaticon-question"></i> New to Topic? Use Our provided resources <br> to study / or use Your own resources to Learn .</span>
+                                                </button>
+                                </h5>
+                            </div>
+
+
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    <i class="flaticon-question"></i>                        Make Payment!
+                                                </span>
+                                                </button>
+                                </h5>
+                            </div>
+
+
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    <i class="flaticon-question"></i>Hurray!!! </span>
+                                                </button>
+                                </h5>
+                            </div>
+
+
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                    <i class="flaticon-question"></i>You earned a  Certificate that can be <br> Verified Online.</span>
+                                                </button>
+                                </h5>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-5">
+                <div class="courses_sidebar">
+                    <div class="video_thumb">
+                        <img src="{% static 'img/latest_blog/video.png' %}" alt="">
+
+                    </div>
+                    <div class="author_info">
+                        <div class="auhor_header">
+                            <div class="thumb">
+                                <!-- <img src="{% static 'img/latest_blog/video.png' %}" alt=""> -->
+                                <h4 style="color: rgba(15, 13, 13, 0.589); font-size: 250%;">Course Content can be found here. <br> If you Already are familiar <br> with the course. <br> You can CLAIM the Certificate now.</b>
+                                </h4>
+                            </div>
+                            <div class="name">
+                                <h2 style="color: rgb(35, 35, 207); font-size: 250%;">Content URL</h2>
+                                <ol style="color: blue;font-size:170% ;list-style:decimal;">
+                                    {% if spec.link1 != '0' %}
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link1 }}" target="_blank">link 1</a></li>
+                                    {% endif %} {% if specs.link2 != '0' %}
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link2 }}" target="_blank">link 2</a></li>
+                                    {% endif %} {% if specs.link3 != '0' %}
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link3 }}" target="_blank">link 3</a></li>
+                                    {% endif %} {% if specs.link4 != '0' %}
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link4 }}" target="_blank">link 4</a></li>
+                                    {% endif %} {% if specs.link5 != '0' %}
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link5 }}" target="_blank">link 5</a></li>
+                                    {% endif %} {% if specs.link6 != '0' %}
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link6 }}" target="_blank">link 6</a></li>
+                                    {% endif %}
+                                    <!-- <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link2 }}">link 2</a></li>
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link3 }}">link 3</a></li>
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link4 }}">link 4</a></li>
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link5 }}">link 5</a></li>
+                                    <li><a class="btn btn-success btn-lg btn-block mb-1" href="{{ specs.link6 }}">link 6</a></li> -->
+                                </ol>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-primary btn-md btn-block p-3" href="paymentButton/{{ user.username }}/{{ specs.serialNo }}">
+                        <h2 style="color: whitesmoke;">Request Certificate</h2>
+                        <!-- <form>
+                            <script src="https://cdn.razorpay.com/static/widget/payment-button.js" data-payment_button_id="pl_Fb3HuqzXJcv8Gc">
+                            </script>
+                        </form> -->
+
+                        <style>
+                            .PaymentButton {
+                                /* width: 130%; */
+                                size: auto;
+                            }
+                        </style>
+                    </a>
+                    {% else %}
+                    <h4 class="text-primary">You need to Login to proceed</h4>
+                    <a class="btn btn-primary btn-md btn-block p-3 disabled">
+                        <h2 style="color: whitesmoke;">Request Certificate</h2>
+                    </a>
+
+
+                    {% endif %}
+
+                    <br>
+                    <h4><a href="{% url 'nwCourse' %}" style="color: blue;">Request</a> A Certificate for a New Course<span class="badge badge-secondary">On User Demand</span></h4>
+                    <!-- <div class="feedback_info">
+                        <h3>Write your feedback</h3>
+                        <p>Your rating</p>
+                        <i class="flaticon-mark-as-favorite-star"></i>
+                        <i class="flaticon-mark-as-favorite-star"></i>
+                        <i class="flaticon-mark-as-favorite-star"></i>
+                        <i class="flaticon-mark-as-favorite-star"></i>
+                        <i class="flaticon-mark-as-favorite-star"></i>
+
+                        <form action="#">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
+                            <button type="submit" class="boxed_btn">Submit</button>
+                        </form>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- testimonial_area_start -->
+<!-- <div class="testimonial_area testimonial_bg_1 overlay">
+    <div class="testmonial_active owl-carousel">
+        <div class="single_testmoial">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="testmonial_text text-center">
+                            <div class="author_img">
+                                <img src="{% static 'img/latest_blog/video.png' %}" alt="">
+                            </div>
+                            <p>
+                                "Working in conjunction with humanitarian aid <br> agencies we have supported programmes to <br> alleviate. human suffering.
+
+                            </p>
+                            <span>- Jquileen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single_testmoial">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="testmonial_text text-center">
+                            <div class="author_img">
+                                <img src="{% static 'img/latest_blog/video.png' %}" alt="">
+                            </div>
+                            <p>
+                                "Working in conjunction with humanitarian aid <br> agencies we have supported programmes to <br> alleviate. human suffering.
+
+                            </p>
+                            <span>- Jquileen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- testimonial_area_end -->
+
+
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends 'base.html' %} {% load static %} {% block content %}{% load filterlist %} {% allCourses as acs %}
+<!-- bradcam_area_start -->
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>Our Courses</h3>
+
+    <!-- popular_courses_start -->
+    <div class="popular_courses plus_padding">
+        <div class="container">
+            <!-- <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-100">
+                    <h3>Popular Courses</h3>
+                    <p>Your domain control panel is designed for ease-of-use and <br> allows for all aspects of your domains.
+                    </p>
+                </div>
+            </div>
+        </div> -->
+
+        </div>
+        <div class="all_courses">
+
+            <div class="container">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            {% for ac in jolly %}
+                            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6" style="background-color: cornsilk; border: 2px solid purple; border-radius: 23.5px;">
+                                <div class="single_courses">
+                                    <div class="thumb">
+                                        <a href="courseDesc/{{ ac.serialNo }}">
+                                            <img src="{% static 'img/courses/5.png' %}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="courses_info" style="word-wrap: break-word;">
+                                        <!-- <span>UI/UX</span> -->
+                                        <h3><a href="courseDesc/{{ ac.serialNo }}"> {{ ac.courseTitle }} </a></h3>
+                                        <div class="star_prise d-flex justify-content-between">
+                                            <div class="star">
+                                                <i class="flaticon-mark-as-favorite-star"></i>
+                                                <span>({{ ac.courseRating }})</span>
+                                            </div>
+                                            <div class="prise">
+                                                <span class="offer">{{ ac.priceBeforeDiscount }}</span>
+                                                <span class="active_prise">
+                                                    {{ ac.priceAfterDiscount }}
+                                                        </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popular_courses_end-->
+    <div class="container">
+        <!-- pagination -->
+        <div class="pagination justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if jolly.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{jolly.previous_page_number}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="page-item"><a class="page-link" href="#">{{jolly.number}}</a></li>
+                    {% if jolly.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{jolly.next_page_number}}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <!-- pagination -->
+    </div>
+</div>
+<!-- bradcam_area_end -->
+
+
+{% allCourses as allcourses_ %}
+
+<!-- our_latest_blog_start -->
+
+
+<div class="our_latest_blog " style="border-top: 5px solid black; ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-xl-12 col-l-12 col-md-12 col-sm-12 ">
+                <div class="section_title text-center mb-100 ">
+                    <h3>Our Popular Courses</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+
+
+
+
+
+            <div class="owl-carousel">
+
+
+
+                {% for a in allcourses_ %} {% if a.addToPopular == True %}
+
+                <div class="col-xl-12 col-md-4 col-sm-12 mr-2">
+
+                    <div class="card ">
+                        <div class="thumb-content ">
+
+                            <a href="courseDesc/{{ a.serialNo }}">
+                                <img class="card-img-top img-fluid " style="width:100%; height:240px; " src="{% static 'img/latest_blog/1.png' %}" alt="ad.ad_uid ">
+                            </a>
+                        </div>
+                        <div class="card-body" style="word-wrap: break-word;">
+                            <h4 class="card-title ">
+                                <a href="courseDesc/{{ a.serialNo }}"> <b>{{ a.courseTitle }} </b> </a>
+                            </h4>
+
+                            <p class="card-text ">
+                                <h5> {{ a.courseDesc }} </h5>
+                            </p>
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                {% endif %} {% endfor %}
+
+            </div>
+
+
+            <!-- {% for a in allcourses_ %} {% if a.addToPopular == True %}
+            <div class="col-xl-3 col-md-3 col-sm-12 mr-2" style="border: 2px solid rgb(53, 53, 63); ">
+                <div class="single_latest_blog ">
+                    <div class="thumb ">
+                        <a href="courseDesc/{{ a.serialNo }}">
+                            <img src="{% static 'img/latest_blog/1.png' %} " alt="">
+                        </a>
+
+                    </div>
+                    <div class="content_blog ">
+                        
+                        <div class="blog_meta ">
+                            <h3>
+                                <a href="courseDesc/{{ a.serialNo }}"> <b>{{ a.courseTitle }}</b> </a>
+                            </h3>
+                            <h5> {{ a.courseDesc }} </h5>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+            {% endif %} {% endfor %} -->
+
+        </div>
+    </div>
+</div>
+
+<!-- our_latest_blog_end -->
+{% endblock %}
